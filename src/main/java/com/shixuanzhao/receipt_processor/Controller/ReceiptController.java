@@ -2,9 +2,8 @@ package com.shixuanzhao.receipt_processor.Controller;
 
 import com.shixuanzhao.receipt_processor.Exception.ReceiptNotFoundException;
 import com.shixuanzhao.receipt_processor.Exception.ReceiptProcessingException;
-import com.shixuanzhao.receipt_processor.Model.Receipt;
 import com.shixuanzhao.receipt_processor.Model.Item;
-import org.springframework.http.HttpStatus;
+import com.shixuanzhao.receipt_processor.Model.Receipt;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +17,9 @@ public class ReceiptController {
 
     @PostMapping("/process")
     public ResponseEntity<Map<String, String>> processReceipt(@RequestBody Receipt receipt) {
+        if (receipt == null) {
+            throw new ReceiptProcessingException("Receipt cannot be null");
+        }
         String id = UUID.randomUUID().toString();
         receiptMap.put(id, receipt);
         return ResponseEntity.ok(Collections.singletonMap("id", id));
