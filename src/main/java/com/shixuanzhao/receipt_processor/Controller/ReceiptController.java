@@ -67,7 +67,7 @@ public class ReceiptController {
         }
 
         // Rule 6: 6 points if the day in the purchase date is odd
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         calendar.setTime(receipt.getPurchaseDate());
         if (calendar.get(Calendar.DAY_OF_MONTH) % 2 != 0) {
             points += 6;
@@ -75,8 +75,9 @@ public class ReceiptController {
 
         // Rule 7: 10 points if the time of purchase is after 2:00pm and before 4:00pm
         calendar.setTime(receipt.getPurchaseDate());
-        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
-        if (hourOfDay > 14 && hourOfDay < 16) {
+        int hourOfDay = Integer.parseInt(receipt.getPurchaseTime().split(":")[0]);
+        int minute = Integer.parseInt(receipt.getPurchaseTime().split(":")[1]);
+        if (hourOfDay == 14 && minute >= 0 || hourOfDay > 14 && hourOfDay < 16) {
             points += 10;
         }
 
