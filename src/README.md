@@ -11,15 +11,14 @@ The Receipt Processor Web Service is a Java-based web application built using th
 - [Testing](#testing)
 
 ## Project Structure
-├── yourpackage/
-│ ├── controller/
-│ │ ├── ReceiptController.java
-│ ├── exception/
-│ │ ├── ReceiptNotFoundException.java
-│ │ ├── ReceiptProcessingException.java
-│ ├── model/
-│ │ ├── Receipt.java
-│ │ ├── Item.java
+<br> &emsp; controller/
+<br> &emsp;&emsp; ReceiptController.java
+<br> &emsp; exception/
+<br> &emsp;&emsp; ReceiptNotFoundException.java
+<br> &emsp;&emsp; ReceiptProcessingException.java
+<br> &emsp; model/
+<br> &emsp;&emsp; Receipt.java
+<br> &emsp;&emsp; Item.java
 
 ## Prerequisites
 
